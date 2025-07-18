@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PDF Structure Viewer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { padding: 2rem; background-color: #f8f9fa; }
+        .section-title { background-color: #007bff; color: white; padding: 0.5rem; border-radius: 5px; }
+        .content-box { padding: 1rem; margin-top: 0.5rem; background-color: #fff; border: 1px solid #ccc; border-radius: 5px; }
+        .term { color: #0d6efd; cursor: pointer; font-weight: 500; text-decoration: underline dotted; }
+    </style>
+</head>
+<body>
+    <h1 class="mb-4 text-primary">📘 Structured PDF Viewer</h1>
+
+    <form method="POST" action="/upload" enctype="multipart/form-data" class="mb-4">
+        <div class="input-group">
+            <input type="file" name="pdf_file" class="form-control" required>
+            <button type="submit" class="btn btn-primary">Upload PDF</button>
+        </div>
+    </form>
+
+    {% if filename %}
+        <div class="mb-3"><strong>📄 Uploaded File:</strong> {{ filename }}</div>
+    {% endif %}
+
+    <h3>📑 Headings:</h3>
+    {% for heading in headings %}
+        <div class="section-title">{{ heading.text }}</div>
+    {% endfor %}
+
+    <hr>
+    <h3>📄 Relevant Sections:</h3>
+    {% for heading, contents in relevant.items() %}
+        <div class="content-box">
+            <strong>{{ heading }}</strong>
+            {% for line in contents %}
+                <p>✔ 
+                {% for word in line.split() %}
+                    {% set clean = word.strip('.,!?:;"\'').lower() %}
+                    {% if clean in term_definitions %}
+                        <span class="term" onclick='showDefinition("{{ clean }}", {{ term_definitions[clean]|tojson }})'>{{ word }}</span>
+                    {% else %}
+                        {{ word }}
+                    {% endif %}
+                {% endfor %}
+                </p>
+            {% endfor %}
+        </div>
+    {% endfor %}
+
+    <!-- Modal -->
+    <div class="modal fade" id="definitionModal" tabindex="-1" aria-labelledby="definitionModalLabel" aria-hidden="true">
+        <div class="modal-dialog"><div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="definitionModalLabel">Definition</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="definitionContent"></div>
+        </div></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function showDefinition(term, sections) {
+            document.getElementById('definitionModalLabel').innerText = term;
+            let html = "<strong>Appears under sections:</strong><ul>";
+            sections.forEach(section => html += `<li>${section}</li>`);
+            html += "</ul>";
+            document.getElementById('definitionContent').innerHTML = html;
+            new bootstrap.Modal(document.getElementById('definitionModal')).show();
+        }
+    </script>
+</body>
+</html>
