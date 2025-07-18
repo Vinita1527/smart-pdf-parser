@@ -28,7 +28,5 @@ PyMuPDF (fitz)
 pip install -r requirements.txt
 
 ### 🗂 Folder Structure
-
-smart-pdf-parser/
 <img width="550" height="355" alt="{CECDCD39-BDEF-465F-AF29-D4E00D2DBC01}" src="https://github.com/user-attachments/assets/af5f00c8-0c57-4f4e-9d09-4ba0c8aa7a41" />
 
