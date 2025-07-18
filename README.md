@@ -28,19 +28,19 @@ PyMuPDF (fitz)
 pip install -r requirements.txt
 
 ### 🗂 Folder Structure
-smart-pdf-parser
-├── app.py                         # Main Flask app
-├── extract_headings.py           # Extracts headings from documents
-├── extract_relevant_sections.py  # Filters relevant sections
-├── generate_terms.py             # Generates key terms
-├── headings.json                 # Output: extracted headings
-├── relevant_sections.json        # Output: key content sections
-├── term_definitions.json         # Output: term definitions
-├── term_to_heading_map.json      # Output: terms mapped to headings
-├── requirements.txt              # Python dependencies
-├── sample.pdf                    # Sample input document
-├── templates/
-│   └── index.html                # HTML template for web UI
-├── uploads/                      # Folder for user-uploaded files
-├── __pycache__/                  # Auto-generated cache
 
+smart-pdf-parser/
+├── app.py # Main Flask app
+├── extract_headings.py # Extracts headings from documents
+├── extract_relevant_sections.py # Filters relevant sections
+├── generate_terms.py # Generates key terms
+├── headings.json # Output: extracted headings
+├── relevant_sections.json # Output: key content sections
+├── term_definitions.json # Output: term definitions
+├── term_to_heading_map.json # Output: terms mapped to headings
+├── requirements.txt # Python dependencies
+├── sample.pdf # Sample input document
+├── templates/
+│ └── index.html # HTML template for web UI
+├── uploads/ # Folder for user-uploaded files
+└── pycache/ # Auto-generated cache
