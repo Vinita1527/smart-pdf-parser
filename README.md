@@ -30,17 +30,5 @@ pip install -r requirements.txt
 ### 🗂 Folder Structure
 
 smart-pdf-parser/
-├── app.py                     # Main Flask app
-├── extract_headings.py        # Extracts headings from documents
-├── extract_relevant_sections.py # Filters relevant sections
-├── generate_terms.py          # Generates key terms
-├── headings.json              # Output: extracted headings
-├── relevant_sections.json     # Output: key content sections
-├── term_definitions.json      # Output: term definitions
-├── term_to_heading_map.json   # Output: terms mapped to headings
-├── requirements.txt           # Python dependencies
-├── sample.pdf                 # Sample input document
-├── templates/
-│   └── index.html             # HTML template for web UI
-├── uploads/                   # Folder for user-uploaded files
-└── __pycache__/               # Auto-generated cache
+<img width="550" height="355" alt="{CECDCD39-BDEF-465F-AF29-D4E00D2DBC01}" src="https://github.com/user-attachments/assets/af5f00c8-0c57-4f4e-9d09-4ba0c8aa7a41" />
+
